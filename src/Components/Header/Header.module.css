@@ -1,0 +1,46 @@
+.header_section{
+    background: #111;
+    max-width: 100%;
+    height: 10vh;
+}
+.header_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo_container{
+    display: flex;
+    align-items: center;
+}
+.logo_container div a img{
+    width: 100px;
+}
+.search{
+    width: 40%;
+    padding: 10px 0;
+    background-color: grey;
+}
+.search select{
+    width: 10%;
+    padding: 12px 0;
+    text-align: center;
+}
+.search input{
+    width: 80%;
+    padding: 12px 0;
+}
+.search span{
+    width: 20%;
+    text-align: center;
+    background: #F3A847;
+    padding: 12px;
+}
+.right_side_links{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.right_side_links img{
+    width: 100px;
+}
