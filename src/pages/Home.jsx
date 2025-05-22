@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../Components/Header/Header'
 import BannerEffect from '../Components/Banner/BannerEffect'
 import PdtCategory from '../Components/ProductCategory/PdtCategory'
+import Product from '../Components/Product/Product'
 
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
     <Header/>
     <BannerEffect/>
     <PdtCategory/>
+    <Product/>
     </>
   )
 }
