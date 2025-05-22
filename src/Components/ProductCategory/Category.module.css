@@ -1,0 +1,65 @@
+.Category {
+    height: 280px;
+    width: 380px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+   margin-bottom: 30px;
+    
+}
+.Category img {
+    width: 100%;
+    object-fit: contain;
+    max-height: 200px;
+    
+}
+.Category a {
+    text-decoration: none;
+    color: rgb(35,35,35);
+}
+.Category h2,
+.Category p {
+    padding: 5px;
+    margin-left: 15px;
+}
+.Category p {
+    font-size: 1rem;
+    font-weight:bold;
+    color: rgb(9, 132, 209);
+}
+/* catagory container on pdtcategory component */
+.Catagory_section{
+    position: relative;
+    display: flex;
+    margin-top: -10px;
+    
+}
+.Category_container {
+    margin: 0 auto ;
+}
+@media  (min-width: 760px){
+    .Category_container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+        
+    }
+    .Category {
+    height: 220px;
+    width: 320px;
+}
+   .Category img {
+    max-height: 150px;
+  
+} 
+}
+
+@media (min-width: 900px) {
+.Catagory_section{
+    margin-top: -60px;
+}
+ .Category_container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin: 0 auto;
+    }
+}
