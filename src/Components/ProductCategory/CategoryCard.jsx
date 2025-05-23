@@ -1,18 +1,19 @@
 import React from 'react'
 import classes from "./Category.module.css";
-const PdtCard = ({data}) => {
-    const {title, image} = data
+import { Link } from 'react-router-dom';
+const CategoryCard = ({data}) => {
+    const {title, image, name} = data
   return (
     <div className={classes.Category}>
-      <a href="">
+      <Link to={`/category/${name}`}>
         <span>
           <h2>{title}</h2>
         </span>
         <img src={image} alt="" />
         <p>Shop now</p>
-      </a>
+      </Link>
     </div>
   );
 }
 
-export default PdtCard
+export default CategoryCard; 

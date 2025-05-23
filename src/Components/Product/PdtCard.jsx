@@ -2,8 +2,9 @@ import React from "react";
 import classes from "./Product.module.css";
 import Rating from "@mui/material/Rating";
 import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
-const PdtCard = ({ SinglePdtItem }) => {
-  const { title, image, rating, price } = SinglePdtItem;
+const PdtCard = ({SinglePdtItem}) => {
+  if (!SinglePdtItem) return null;
+  const { image, title, rating, price } = SinglePdtItem;
   return (
     <div className={`${classes.card_container} `}>
       <div className={classes.img_container}>

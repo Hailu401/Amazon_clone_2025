@@ -5,6 +5,7 @@ import { BsSearch } from "react-icons/bs";
 import { SlLocationPin } from "react-icons/sl";
 import flag from '../../assets/images/usa_flag.png'
 import LowerHeader from './LowerHeader';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -14,12 +15,12 @@ const Header = () => {
           <div className={classes.header_container}>
             {/* { logo search} */}
             <div className={classes.logo_container}>
-              <a href="/">
+              <Link to="/">
                 <img
                   src="https://pngimg.com/uploads/amazon/small/amazon_PNG11.png"
                   alt="amazon logo"
                 />
-              </a>
+              </Link>
               {/* delivery */}
               <div className={classes.delivery}>
                 <span>
@@ -50,23 +51,23 @@ const Header = () => {
                 </select>
               </a>
               {/* three components */}
-              <a href="#">
+              <Link to="/auth">
                 <div>
                   <p> Sign in</p>
                   <span>Account & Lists</span>
                 </div>
-              </a>
+              </Link>
               {/* orders */}
-              <a href="/orders">
+              <Link to="/orders">
                 <p>Returns</p>
                 <span>& Orders</span>
-              </a>
+              </Link>
               {/* cart */}
-              <a href="/cart" className={classes.cart}>
+              <Link to="/cart" className={classes.cart}>
                 <BiCart size={35} />
                 <span>0</span>
                 <p>Cart</p>
-              </a>
+              </Link>
             </div>
           </div>
         </section>

@@ -1,7 +1,6 @@
-
 import classes from "./Category.module.css";
 import { pdtcatagoryInfos } from "./CategoryData";
-import PdtCard from "./PdtCard";
+import PdtCard from "./CategoryCard";
 
 const PdtCategory = () => {
   return (

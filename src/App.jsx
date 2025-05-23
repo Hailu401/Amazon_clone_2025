@@ -1,16 +1,17 @@
-import { useState } from 'react'
+
 import './App.css'
-import Home from './pages/Home'
+import Routing from './pages/Routing'
+
 
 function App() {
  
 
   return (
     <>
-      
-       <Home/>
+       <Routing/>
     </>
   )
 }
+
 
 export default App
