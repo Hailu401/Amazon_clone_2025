@@ -60,10 +60,11 @@ box-shadow: none;
 height: auto;
 display: flex;
 gap: 50px;
-width: 100%;
+max-width: 100%;
 }
 .product_flexed h3 {
     padding: 20px 0px;
+    
 }
 .product_flexed .button {
     display: block;
@@ -74,12 +75,16 @@ width: 100%;
 .product_flexed {
     height: 50vh;
 }
-.product_flexed img {
-    width: 400px !important;
+.product_flexed img{
+    width: 300px !important;
     height: auto;
     padding: 20px;
 }
-
+.product_desc{
+    width: 750px;
+    line-height: 1.5;
+    padding: 5px 0;
+}
 @media screen and (max-width: 768px) {
     .product_flexed {
         display: flex;

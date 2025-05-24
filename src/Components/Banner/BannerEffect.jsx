@@ -12,8 +12,8 @@ const BannerEffect = () => {
         showThumbs={false}
         showIndicators={false}
       >
-        {img.map((image) => {
-          return <img src={image} alt="banner" />;
+        {img?.map((image, i) => {
+          return <img src={image} alt="banner" key={i}/>;
         })}
       </Carousel>
       <div className={classes.hero_img}></div>

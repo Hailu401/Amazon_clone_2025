@@ -2,19 +2,26 @@ import React from "react";
 import classes from "./Product.module.css";
 import Rating from "@mui/material/Rating";
 import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
-const PdtCard = ({SinglePdtItem}) => {
-  if (!SinglePdtItem) return null;
-  const { image, title, rating, price } = SinglePdtItem;
+import { Link } from "react-router-dom";
+const PdtCard = ({ SinglePdtItem, flex, PdtDesc }) => {
+  // if (!SinglePdtItem) return <h2>Product Not Found!</h2>;
+
+  const { image, title, id, rating, price, description } = SinglePdtItem;
+
   return (
-    <div className={`${classes.card_container} `}>
+    <div
+      className={`${classes.card_container} ${
+        flex ? classes.product_flexed : ""
+      }`}
+    >
       <div className={classes.img_container}>
-        <a href="#">
+        <Link to={`/products/${id}`}>
           <img src={image} alt="" />
-        </a>
+        </Link>
       </div>
       <div>
-        <h4>{title}</h4>
-
+        <h3>{title}</h3>
+        {PdtDesc && <div className={classes.product_desc}>{description}</div>}
         <div className={classes.rating}>
           {/* rating */}
           <Rating value={rating?.rate} precision={0.2} />

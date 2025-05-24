@@ -5,43 +5,41 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { BaseUrl } from "../../../src/Api/EndPoint";
 import PdtCard from "../../Components/Product/PdtCard";
+import Loader from "../../Components/Loader/Loader";
 
 const Result = () => {
   const [ProductItem, setProductItem] = useState([]);
+  const[isloading, setisLoading] = useState(false)
   const { categoryName } = useParams();
   useEffect(() => {
-    // const fetch = async () => {
-    //   try {
-    //     const item = await axios.get(
-    //       `${BaseUrl}/products/category/${categoryName}`
-    //     );
-    //     setProductItem(item.data);
-    //   } catch (error) {
-    //     console.log("there is a fetching error>>>>", error);
-    //   }
-    // };
-    // fetch();
-
-    axios.get(`${BaseUrl}/products/category/${categoryName}`).then((res)=>{
-        return setProductItem(res.data)
-    }).catch((err)=>{
-        console.log("there is a fetching error>>>>", err);
-    })
+  
+      try {
+        setisLoading(true);
+        axios.get(`${BaseUrl}/products/category/${categoryName}`).then((res)=>(setProductItem(res.data)))
+          setisLoading(false);
+      } catch (error) {
+        console.log("there is a fetching error>>>>", error);
+        setisLoading(false);
+      }
   }, []);
-  console.log(ProductItem);
+  // console.log(ProductItem);
   return (
     <div>
       <Layout>
-        <section>
-          <h1 style={{ padding: "30px" }}>Results</h1>
-          <p style={{ padding: "30px" }}>Category/{categoryName}</p>
-          <hr />
-          <div className={classes.product_container}>
-            {ProductItem?.map((product) => (
-              <PdtCard key={product.id} SinglePdtItem={product} />
-            ))}
-          </div>
-        </section>
+        {isloading ? (
+          <Loader />
+        ) : (
+          <section>
+            <h1 style={{ padding: "30px" }}>Results</h1>
+            <p style={{ padding: "30px" }}>Category/{categoryName}</p>
+            <hr />
+            <div className={classes.product_container}>
+              {ProductItem?.map((product) => (
+                <PdtCard key={product.id} SinglePdtItem={product} />
+              ))}
+            </div>
+          </section>
+        )}
       </Layout>
     </div>
   );
