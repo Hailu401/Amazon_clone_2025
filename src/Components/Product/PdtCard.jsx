@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./Product.module.css";
 import Rating from "@mui/material/Rating";
 import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import { Link } from "react-router-dom";
+import { DataContext } from "../DataProvider/DataProvider";
+import { Type } from "../../pages/utilities/action.type";
+
 const PdtCard = ({ SinglePdtItem, flex, PdtDesc }) => {
   // if (!SinglePdtItem) return <h2>Product Not Found!</h2>;
 
   const { image, title, id, rating, price, description } = SinglePdtItem;
+  const [state, dispatch] = useContext(DataContext);
+  console.log(state);
+  const Add_To_Cart = () => {
+  
+    dispatch({
+      type: Type.ADD_TO_BASKET,
+      item: {
+        image,
+        title,
+        id,
+        rating,
+        price,
+        description,
+      },
+    });
+  };
 
   return (
     <div
@@ -33,7 +52,9 @@ const PdtCard = ({ SinglePdtItem, flex, PdtDesc }) => {
           <CurrencyFormat amount={price} />
         </div>
 
-        <button className={classes.Cart_button}>add to cart</button>
+        <button className={classes.Cart_button} onClick={Add_To_Cart}>
+          add to cart
+        </button>
       </div>
     </div>
   );
