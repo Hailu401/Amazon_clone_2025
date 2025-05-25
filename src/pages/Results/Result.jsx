@@ -35,7 +35,7 @@ const Result = () => {
             <hr />
             <div className={classes.product_container}>
               {ProductItem?.map((product) => (
-                <PdtCard key={product.id} SinglePdtItem={product} />
+                <PdtCard key={product.id} SinglePdtItem={product} AddBtn={true}/>
               ))}
             </div>
           </section>

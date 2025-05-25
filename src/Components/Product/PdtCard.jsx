@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 import { DataContext } from "../DataProvider/DataProvider";
 import { Type } from "../../pages/utilities/action.type";
 
-const PdtCard = ({ SinglePdtItem, flex, PdtDesc }) => {
+const PdtCard = ({ SinglePdtItem, flex, PdtDesc, AddBtn }) => {
   // if (!SinglePdtItem) return <h2>Product Not Found!</h2>;
 
   const { image, title, id, rating, price, description } = SinglePdtItem;
   const [state, dispatch] = useContext(DataContext);
-  console.log(state);
+  // console.log(state);
   const Add_To_Cart = () => {
   
     dispatch({
@@ -51,10 +51,11 @@ const PdtCard = ({ SinglePdtItem, flex, PdtDesc }) => {
           {/* price */}
           <CurrencyFormat amount={price} />
         </div>
-
-        <button className={classes.Cart_button} onClick={Add_To_Cart}>
-          add to cart
-        </button>
+        {AddBtn && (
+          <button className={classes.Cart_button} onClick={Add_To_Cart}>
+            add to cart
+          </button>
+        )}
       </div>
     </div>
   );

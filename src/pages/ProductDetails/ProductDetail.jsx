@@ -29,15 +29,15 @@ const ProductDetail = () => {
   }, [])
   console.log(product);
   return (
-    <div>
+    <>
       <Layout>
         {isloading ? (
           <Loader />
         ) : (
-          <PdtCard SinglePdtItem={product} flex={true} PdtDesc={true} />
+          <PdtCard SinglePdtItem={product} flex={true} PdtDesc={true} AddBtn={true} />
         )}
       </Layout>
-    </div>
+    </>
   );
 }
 

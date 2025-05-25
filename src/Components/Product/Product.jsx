@@ -31,7 +31,7 @@ const Product = () => {
         <div className={classes.Allproduct_section}>
           <div className={classes.Allproduct_container}>
             {product?.map((pdtItem) => {
-              return <PdtCard SinglePdtItem={pdtItem} key={pdtItem.id} />;
+              return <PdtCard SinglePdtItem={pdtItem} key={pdtItem.id} AddBtn={true} />;
             })}
           </div>
         </div>
