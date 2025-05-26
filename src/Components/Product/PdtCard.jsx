@@ -4,7 +4,7 @@ import Rating from "@mui/material/Rating";
 import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import { Link } from "react-router-dom";
 import { DataContext } from "../DataProvider/DataProvider";
-import { Type } from "../../pages/utilities/action.type";
+import { Type } from "../../pages/utilities/actionTypes";
 
 const PdtCard = ({ SinglePdtItem, flex, PdtDesc, AddBtn }) => {
   // if (!SinglePdtItem) return <h2>Product Not Found!</h2>;
@@ -33,9 +33,9 @@ const PdtCard = ({ SinglePdtItem, flex, PdtDesc, AddBtn }) => {
         flex ? classes.product_flexed : ""
       }`}
     >
-      <div className={classes.img_container}>
+      <div >
         <Link to={`/products/${id}`}>
-          <img src={image} alt="" />
+          <img src={image} alt=""  />
         </Link>
       </div>
       <div>
@@ -52,7 +52,7 @@ const PdtCard = ({ SinglePdtItem, flex, PdtDesc, AddBtn }) => {
           <CurrencyFormat amount={price} />
         </div>
         {AddBtn && (
-          <button className={classes.Cart_button} onClick={Add_To_Cart}>
+          <button className={classes.button} onClick={Add_To_Cart}>
             add to cart
           </button>
         )}

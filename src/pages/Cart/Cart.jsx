@@ -8,7 +8,7 @@ import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa6";
 import CurrencyFormat from '../../Components/CurrencyFormat/CurrencyFormat'
 import { Link } from 'react-router-dom'
-import { Type } from '../utilities/action.type'
+import { Type } from '../utilities/actionTypes'
 
 const Cart = () => {
  const [{basket}, dispatch] = useContext(DataContext);
@@ -41,9 +41,12 @@ const decrement = (id) => {
 
           <hr />
           {basket?.length == 0 ? (
-            <p>
-              Opps❗ 🙅‍♀️ <b>Your Cart is Empty</b>
-            </p>
+            <div  className={classes.cart_empty}>
+              <p>
+                Opps❗ 🙅‍♀️ <b>Your Cart is Empty</b>
+              </p>
+              <Link to="/">Back to Shop</Link>
+            </div>
           ) : (
             basket?.map((item, i) => {
               return (

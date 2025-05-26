@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import classes from "./Result.module.css";
 import Layout from "../../Components/Layout/Layout";
 import axios from "axios";
@@ -31,7 +31,7 @@ const Result = () => {
         ) : (
           <section>
             <h1 style={{ padding: "30px" }}>Results</h1>
-            <p style={{ padding: "30px" }}>Category/{categoryName}</p>
+            <h3 style={{ padding: "30px" }}>Category/{categoryName}</h3>
             <hr />
             <div className={classes.product_container}>
               {ProductItem?.map((product) => (

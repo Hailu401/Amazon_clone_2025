@@ -28,13 +28,13 @@ const Product = () => {
       {isloading ? (
         <Loader />
       ) : (
-        <div className={classes.Allproduct_section}>
-          <div className={classes.Allproduct_container}>
+        
+          <section className={classes.Allproduct_container}>
             {product?.map((pdtItem) => {
               return <PdtCard SinglePdtItem={pdtItem} key={pdtItem.id} AddBtn={true} />;
             })}
-          </div>
-        </div>
+          </section>
+       
       )}
     </>
   );
