@@ -7,9 +7,10 @@ import flag from '../../assets/images/usa_flag.png'
 import LowerHeader from './LowerHeader';
 import { Link } from 'react-router-dom';
 import { DataContext } from '../DataProvider/DataProvider';
+import { auth } from '../../pages/utilities/firebase';
 
 const Header = () => {
-  const [{basket}, dispatch]= useContext(DataContext);
+  const [{basket, user}, dispatch]= useContext(DataContext);
   const total = basket?.reduce((amount, item)=>(amount + item.amount), 0)
   // console.log(total);
   return (
@@ -55,10 +56,20 @@ const Header = () => {
                 </select>
               </a>
               {/* three components */}
-              <Link to="/auth">
+              <Link to={!user && "/auth"}>
                 <div>
-                  <p> Sign in</p>
-                  <span>Account & Lists</span>
+                  {user ? (
+                    <>
+                      <p>Hello {user?.email?.split("@")[0]}</p>
+                      <span onClick={() => auth.signOut()}>Sign Out</span>
+                    </>
+                  ) : (
+                    <>
+                      <p> Sign in</p>
+                      <span>Account & Lists</span>
+                    </>
+                  )}
+
                 </div>
               </Link>
               {/* orders */}
