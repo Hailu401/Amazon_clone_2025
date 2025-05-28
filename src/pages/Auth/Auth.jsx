@@ -2,14 +2,11 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import classes from "./Auth.module.css";
 import { auth } from "../utilities/firebase";
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
-import { DataContext } from `../../Components/Dataprovider/Dataprovider`;
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
+import { DataContext } from '../../Components/Dataprovider/Dataprovider';
 import { Type } from "../utilities/actionTypes";
 import { ClipLoader } from "react-spinners";
-function Auth() {
+const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
