@@ -6,6 +6,7 @@ import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from "fireba
 import { DataContext } from '../../Components/Dataprovider/Dataprovider';
 import { Type } from "../utilities/actionTypes";
 import { ClipLoader } from "react-spinners";
+import { toast } from "react-toastify";
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,6 +40,12 @@ const Auth = () => {
         .catch((err) => {
           setError(err.message);
           setLoading({ ...Loading, signIn: false });
+          // toast.error(err.message.split("/")[1].split("-",')').join(" "));
+          const msg = err.message
+            .split("auth/")[1]
+            .split(")")[0]
+            .replace(/-/g, " ");
+          toast.error(msg);
         });
     } else {
       setLoading({ ...Loading, signUp: true });
@@ -54,6 +61,13 @@ const Auth = () => {
         .catch((err) => {
           setError(err.message);
           setLoading({ ...Loading, signUp: false });
+
+          const msg = err.message
+            .split("auth/")[1]
+            .split(")")[0]
+            .replace(/-/g, " ");
+          toast.error(msg);
+        
         });
     }
   };

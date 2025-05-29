@@ -13,6 +13,7 @@ import { Type } from '../utilities/actionTypes'
 const Cart = () => {
  const [{basket}, dispatch] = useContext(DataContext);
 //  console.log(basket);
+
 const total = basket.reduce((amount, item) => {
   return item.price * item.amount + amount;
 }, 0);
@@ -41,11 +42,12 @@ const decrement = (id) => {
 
           <hr />
           {basket?.length == 0 ? (
-            <div  className={classes.cart_empty}>
+            <div className={classes.cart_empty}>
               <p>
                 Opps❗ 🙅‍♀️ <b>Your Cart is Empty</b>
               </p>
               <Link to="/">Back to Shop</Link>
+             
             </div>
           ) : (
             basket?.map((item, i) => {

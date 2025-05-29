@@ -9,6 +9,7 @@ import ProductDetail from './ProductDetails/ProductDetail'
 import Auth from './Auth/Auth';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import { ToastContainer, toast } from "react-toastify";
 
 
 const Routing = () => {
@@ -16,24 +17,30 @@ const Routing = () => {
     "pk_test_51QBLKRLvGkkHR0PPK2GMw3mvRU1Ze8HSjIuMtdOWhz0TcTIY7v5KiXZNL4rwoDZ5kG51xJ4Ha6QhqiTvCD8su8Jr00QMDe3uws"
   );
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/orders" element={<Order />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route
-          path="/payment"
-          element={
-            <Elements stripe={stripePromise}>
-              <Payment />
-            </Elements>
-          }
-        />
-        <Route path="/category/:categoryName" element={<Result />} />
-        <Route path="/products/:productId" element={<ProductDetail />} />
-      </Routes>
-    </Router>
+    <>
+      <div>
+        {" "}
+        <ToastContainer theme='dark' />
+        <Router>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/orders" element={<Order />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route
+              path="/payment"
+              element={
+                <Elements stripe={stripePromise}>
+                  <Payment />
+                </Elements>
+              }
+            />
+            <Route path="/category/:categoryName" element={<Result />} />
+            <Route path="/products/:productId" element={<ProductDetail />} />
+          </Routes>
+        </Router>
+      </div>
+    </>
   );
 }
 

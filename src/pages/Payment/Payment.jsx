@@ -7,9 +7,12 @@ import PdtCard from '../../Components/Product/PdtCard'
 import { AxiosInstance } from "../../Api/axios";
 import {ClipLoader} from 'react-spinners'
 import CurrencyFormat from "../../Components/CurrencyFormat/CurrencyFormat";
+import { useNavigate } from "react-router-dom";
+import { db } from "../utilities/firebase";
+import { Type } from "../utilities/actionTypes";
 
 function Payment() {
-  const [{user, basket}] = useContext(DataContext)
+  const [{user, basket}, dispatch] = useContext(DataContext)
   const totalItem = basket?.reduce((amount, item)=>{
     return amount + item.amount
   }, 0)
@@ -18,37 +21,62 @@ function Payment() {
   }, 0);
 
   const [cardError, setCardError] = useState(null);
-  const [process, setProcess] = useState();
-  // const stripe = useStripe();
-  // const elements = useElements();
-  // const navigate = useNavigate();
+  const [process, setProcess] = useState(false);
+  const stripe = useStripe();
+  const elements = useElements();
+  const navigate = useNavigate();
   const handleChng = (e) => {
     // console.log(e);
     e.error.message ? setCardError(e?.error?.message) : setCardError("");
-    //  e.error? setCardError(e?.error) : setCardError("");
+    
   };
-  // const handlePymt = async(e)=>{
-  //   e.preventDefault();
+  const handlePymt = async(e)=>{
+    e.preventDefault();
 
   //   //1.backend contact----> to the client secret
+  try {
+    const res = await AxiosInstance({
+      method: "post",
+      url: `/payment/create?total=${totalPrice * 100}`,
+    });
+    // console.log(res.data);
+    setProcess(true)
+    const clientSecret = res.data?.clientSecret;
+    // 2.client side(react side confirmation)
+    const { paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+      },
+    });
+    //3.after the confirmation --->save order on firestore database and clear basket
+    await db
+      .collection("users")
+      .doc(user.uid)
+      .collection("orders")
+      .doc(paymentIntent.id)
+      .set({
+        basket: basket,
+        amount: paymentIntent.amount,
+        created: paymentIntent.created,
+      });
+    // set empty basket
+    dispatch({
+      type: Type.SET_EMPTY_BASKET,
+    });
+    setProcess(false);
+   
+    navigate("/orders", {
+      state: {
+        message: "you have placed new order",
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    setProcess(false)
+  }
 
-  //   try {
-  //     // const response = await AxiosInstance({
-  //     //   method: "POST",
-  //     //   url: `/payment/create?total=${totalPrice * 100}`,
-  //     // });
-  //     // console.log(response.data);
-  //     // setProcess(true);
-  //     // const clientSecret = response.data?.clientSecret;
-  //     //2.client side(react side confirmation)
-  //     // const { paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-  //     //   payment_method: {
-  //     //     card: elements.getElement(CardElement),
-  //     //   },
-  //     // })
-  //   }
-  // }
-      // console.log(paymentIntent);
+  
+   }
   return (
     <Layout>
       {/* header */}
@@ -80,7 +108,7 @@ function Payment() {
           <h3>Payment Method</h3>
           <div className={classes.payment_card_container}>
             <div className={classes.payment_details}>
-            <form 
+            <form onSubmit={handlePymt}
                 >
                 {/* error */}
                 {cardError && (
