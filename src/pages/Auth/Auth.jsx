@@ -7,6 +7,7 @@ import { DataContext } from '../../Components/Dataprovider/Dataprovider';
 import { Type } from "../utilities/actionTypes";
 import { ClipLoader } from "react-spinners";
 import { toast } from "react-toastify";
+
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +22,7 @@ const Auth = () => {
   const [{user}, dispatch] = useContext(DataContext);
   //  console.log(user)
   const useNavStateData = useLocation();
-  console.log(useNavStateData.state);
+  // console.log(useNavStateData.state);
 
   const autHandler = (e) => {
     e.preventDefault();
@@ -40,7 +41,7 @@ const Auth = () => {
         .catch((err) => {
           setError(err.message);
           setLoading({ ...Loading, signIn: false });
-          // toast.error(err.message.split("/")[1].split("-",')').join(" "));
+       
           const msg = err.message
             .split("auth/")[1]
             .split(")")[0]

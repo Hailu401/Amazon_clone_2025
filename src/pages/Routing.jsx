@@ -10,6 +10,7 @@ import Auth from './Auth/Auth';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { ToastContainer, toast } from "react-toastify";
+import ProtectedRoute from '../Components/ProtectedComponent/ProtectedRoute';
 
 
 const Routing = () => {
@@ -20,7 +21,7 @@ const Routing = () => {
     <>
       <div>
         {" "}
-        <ToastContainer theme='dark' />
+        <ToastContainer theme="dark" />
         <Router>
           <Routes>
             <Route path="/" element={<Landing />} />
@@ -30,9 +31,11 @@ const Routing = () => {
             <Route
               path="/payment"
               element={
-                <Elements stripe={stripePromise}>
-                  <Payment />
-                </Elements>
+                <ProtectedRoute msg={"you must login/signup to pay"} redirect={"/payment"}>
+                  <Elements stripe={stripePromise}>
+                    <Payment />
+                  </Elements>
+                </ProtectedRoute>
               }
             />
             <Route path="/category/:categoryName" element={<Result />} />
