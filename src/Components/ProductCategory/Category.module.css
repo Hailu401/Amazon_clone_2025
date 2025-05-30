@@ -36,7 +36,7 @@
 .Category_container {
     margin: 0 auto ;
 }
-@media  (min-width: 760px){
+@media  (min-width: 768px){
     .Category_container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);

@@ -2,8 +2,11 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import classes from "./Auth.module.css";
 import { auth } from "../utilities/firebase";
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
-import { DataContext } from '../../Components/Dataprovider/Dataprovider';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { DataContext } from "../../Components/Dataprovider/DataProvider";
 import { Type } from "../utilities/actionTypes";
 import { ClipLoader } from "react-spinners";
 import { toast } from "react-toastify";
@@ -19,7 +22,7 @@ const Auth = () => {
 
   const navigate = useNavigate();
 
-  const [{user}, dispatch] = useContext(DataContext);
+  const [{ user }, dispatch] = useContext(DataContext);
   //  console.log(user)
   const useNavStateData = useLocation();
   // console.log(useNavStateData.state);
@@ -36,17 +39,18 @@ const Auth = () => {
             user: userInfo.user,
           });
           setLoading({ ...Loading, signIn: false });
+          toast.success("You have Sucessfully logged in!", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            theme: "colored",
+          });
           navigate(useNavStateData?.state?.redirect || "/");
         })
         .catch((err) => {
           setError(err.message);
           setLoading({ ...Loading, signIn: false });
-       
-          const msg = err.message
-            .split("auth/")[1]
-            .split(")")[0]
-            .replace(/-/g, " ");
-          toast.error(msg);
         });
     } else {
       setLoading({ ...Loading, signUp: true });
@@ -57,18 +61,19 @@ const Auth = () => {
             user: userInfo.user,
           });
           setLoading({ ...Loading, signUp: false });
+          toast.success("Your Account is Sucessfully created!", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            theme: "colored",
+          });
           navigate(useNavStateData?.state?.redirect || "/");
         })
         .catch((err) => {
           setError(err.message);
+          // setError(err.message.split("@")[1].split("-").join(" "));
           setLoading({ ...Loading, signUp: false });
-
-          const msg = err.message
-            .split("auth/")[1]
-            .split(")")[0]
-            .replace(/-/g, " ");
-          toast.error(msg);
-        
         });
     }
   };
@@ -137,6 +142,6 @@ const Auth = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Auth;

@@ -5,6 +5,7 @@ import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import { Link } from "react-router-dom";
 import { DataContext } from "../DataProvider/DataProvider";
 import { Type } from "../../pages/utilities/actionTypes";
+import { toast } from "react-toastify";
 
 const PdtCard = ({ SinglePdtItem, flex, PdtDesc, AddBtn }) => {
   // if (!SinglePdtItem) return <h2>Product Not Found!</h2>;
@@ -13,6 +14,7 @@ const PdtCard = ({ SinglePdtItem, flex, PdtDesc, AddBtn }) => {
   const [state, dispatch] = useContext(DataContext);
   // console.log(state);
   const Add_To_Cart = () => {
+    
   
     dispatch({
       type: Type.ADD_TO_BASKET,
@@ -25,6 +27,14 @@ const PdtCard = ({ SinglePdtItem, flex, PdtDesc, AddBtn }) => {
         description,
       },
     });
+    toast.success("Your item Sucessfully Added!", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      theme: "colored",
+    });
+      
   };
 
   return (
@@ -55,6 +65,7 @@ const PdtCard = ({ SinglePdtItem, flex, PdtDesc, AddBtn }) => {
           <button className={classes.button} onClick={Add_To_Cart}>
             add to cart
           </button>
+        
         )}
       </div>
     </div>

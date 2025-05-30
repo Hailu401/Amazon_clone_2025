@@ -21,7 +21,7 @@ const Routing = () => {
     <>
       <div>
         {" "}
-        <ToastContainer theme="dark" />
+        <ToastContainer />
         <Router>
           <Routes>
             <Route path="/" element={<Landing />} />

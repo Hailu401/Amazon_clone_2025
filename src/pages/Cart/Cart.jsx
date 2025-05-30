@@ -9,6 +9,7 @@ import { FaMinus } from "react-icons/fa6";
 import CurrencyFormat from '../../Components/CurrencyFormat/CurrencyFormat'
 import { Link } from 'react-router-dom'
 import { Type } from '../utilities/actionTypes'
+import { toast } from 'react-toastify'
 
 const Cart = () => {
  const [{basket}, dispatch] = useContext(DataContext);
@@ -30,6 +31,8 @@ const decrement = (id) => {
     type: Type.REMOVE_FROM_BASKET,
     id,
   });
+  
+  
 };
   return (
     <Layout>
@@ -46,8 +49,10 @@ const decrement = (id) => {
               <p>
                 Opps❗ 🙅‍♀️ <b>Your Cart is Empty</b>
               </p>
-              <Link to="/">Back to Shop</Link>
-             
+              <Link to="/">
+                {" "}
+                Continue Shopping 🛒
+              </Link>
             </div>
           ) : (
             basket?.map((item, i) => {

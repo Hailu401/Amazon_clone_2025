@@ -10,9 +10,12 @@ import CurrencyFormat from "../../Components/CurrencyFormat/CurrencyFormat";
 import { useNavigate } from "react-router-dom";
 import { db } from "../utilities/firebase";
 import { Type } from "../utilities/actionTypes";
+import { toast } from "react-toastify";
+
 
 function Payment() {
-  const [{user, basket}, dispatch] = useContext(DataContext)
+  const [{user, basket}, dispatch] = useContext(DataContext);
+  
   const totalItem = basket?.reduce((amount, item)=>{
     return amount + item.amount
   }, 0)
@@ -59,11 +62,19 @@ function Payment() {
         amount: paymentIntent.amount,
         created: paymentIntent.created,
       });
+      
     // set empty basket
     dispatch({
       type: Type.SET_EMPTY_BASKET,
     });
     setProcess(false);
+    toast.info("you have placed new order!", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      theme: "colored",
+    });
    
     navigate("/orders", {
       state: {

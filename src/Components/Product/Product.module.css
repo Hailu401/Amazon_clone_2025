@@ -1,5 +1,5 @@
 .card_container {
-    width: 250px;
+    width: 300px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     padding: 10px;
     color: black;
@@ -11,7 +11,6 @@
     display: block;
 }
 .card_container img{
-    /* padding: 0px; */
     height: 200px;
     width: 100%;
     object-fit: contain;
@@ -88,16 +87,18 @@ width: 100%;
 }
 @media screen and (max-width: 768px) {
     .card_container{
-        width: 350px;
+        width: 350px
     }
+   
     .product_flexed {
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 10px;
         margin: 0 auto;
     }
     .product_desc{
-        width: 450px;
+        width: 400px;
     }
     
 }

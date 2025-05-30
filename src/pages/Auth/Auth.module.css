@@ -21,6 +21,7 @@
     border-radius: 5px;
     border: 1px solid lightgray;
     padding: 20px;
+    box-shadow: 0.3px 0.3px 1px 0px;
   }
   .login_container h1 {
     font-weight: 800;

@@ -7,8 +7,10 @@ import { Type } from './pages/utilities/actionTypes';
 import { auth } from './pages/utilities/firebase';
 
 
+
 function App() {
-  const [ dispatch] = useContext(DataContext);
+  const [{user}, dispatch] = useContext(DataContext);
+
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
