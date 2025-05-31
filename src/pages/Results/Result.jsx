@@ -9,7 +9,7 @@ import Loader from "../../Components/Loader/Loader";
 
 const Result = () => {
   const [ProductItem, setProductItem] = useState([]);
-  const[isloading, setisLoading] = useState(false)
+  const[isloading, setisLoading] = useState()
   const { categoryName } = useParams();
   useEffect(() => {
   
@@ -26,20 +26,25 @@ const Result = () => {
   return (
     <div>
       <Layout>
-        {isloading ? (
-          <Loader />
-        ) : (
           <section>
             <h1 style={{ padding: "30px" }}>Results</h1>
             <h3 style={{ padding: "30px" }}>Category/{categoryName}</h3>
             <hr />
-            <div className={classes.product_container}>
-              {ProductItem?.map((product) => (
-                <PdtCard key={product.id} SinglePdtItem={product} AddBtn={true}/>
-              ))}
-            </div>
+            {isloading ? (
+              <Loader />
+            ) : (
+              <div className={classes.product_container}>
+                {ProductItem?.map((product) => (
+                  <PdtCard
+                    key={product.id}
+                    SinglePdtItem={product}
+                    AddBtn={true}
+                  />
+                ))}
+              </div>
+            )}
           </section>
-        )}
+        
       </Layout>
     </div>
   );

@@ -44,11 +44,11 @@
         
     }
     .Category {
-    height: 220px;
+    height: 320px;
     width: 320px;
 }
    .Category img {
-    max-height: 150px;
+    max-height: 200px;
   
 } 
 }

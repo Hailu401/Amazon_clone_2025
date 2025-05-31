@@ -6,7 +6,7 @@ import { BaseUrl } from '../../Api/EndPoint';
 import Loader from '../Loader/Loader';
 const Product = () => {
     const [product, setProduct] = useState();
-    const [isloading, setisLoading] = useState(false)
+    const [isloading, setisLoading] = useState()
 
     useEffect(()=>{
             try {

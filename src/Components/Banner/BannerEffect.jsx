@@ -5,7 +5,7 @@ import {img} from '../../assets/images/img/data'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 const BannerEffect = () => {
   return (
-    <>
+    <div className={classes.banner}>
       <Carousel
         infiniteLoop={true}
         autoPlay={true}
@@ -17,7 +17,7 @@ const BannerEffect = () => {
         })}
       </Carousel>
       <div className={classes.hero_img}></div>
-    </>
+    </div>
   );
 }
 
