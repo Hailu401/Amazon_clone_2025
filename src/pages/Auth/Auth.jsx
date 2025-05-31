@@ -6,7 +6,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { DataContext } from "../../Components/Dataprovider/DataProvider";
+import { DataContext } from "../../Components/DataProvider/DataProvider"
 import { Type } from "../utilities/actionTypes";
 import { ClipLoader } from "react-spinners";
 import { toast } from "react-toastify";
