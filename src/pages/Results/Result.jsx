@@ -26,7 +26,7 @@ const Result = () => {
   return (
     <div>
       <Layout>
-          <section>
+          <section className={classes.result_section}>
             <h1 style={{ padding: "30px" }}>Results</h1>
             <h3 style={{ padding: "30px" }}>Category/{categoryName}</h3>
             <hr />
