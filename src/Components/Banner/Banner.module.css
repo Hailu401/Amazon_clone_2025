@@ -1,7 +1,7 @@
-.banner{
-    height: 70vh;
-}
 
+.banner{
+    height: 15vh;
+}
 .hero_img {
     position: relative;
 }
@@ -10,10 +10,17 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 350px;
+    height: 100px;
     background-image: linear-gradient(
         to bottom,
         rgba(225, 225, 225, 0),
         rgba(225, 225, 225)
     );
+}
+
+@media (min-width: 768px) {
+    
+    .hero_img::before{
+        height: 350px;
+    }
 }
