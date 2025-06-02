@@ -8,8 +8,9 @@
     justify-items: center;
     max-width: 1450px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
     gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
     
 }
  section .product_container {

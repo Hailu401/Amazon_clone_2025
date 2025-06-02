@@ -97,13 +97,12 @@
     .Allproduct_container{
         width: 90%;
         grid-template-columns: repeat(2, 1fr);
-        /* border: 2px red solid; */
         padding: 10px;
     }
 }
 @media screen and (min-width: 1025px) {
     .Allproduct_container{
-        max-width: 95%;
+        max-width: 1450px;
         grid-template-columns: repeat(4, 1fr);
         
     }

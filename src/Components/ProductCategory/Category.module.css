@@ -62,15 +62,15 @@
 @media screen and (min-width: 1025px) {
 .Catagory_section{
     margin-top: 60px;
-    
+    width: 1450px;
 }
  .Category_container {
-       width: 1450px;
+       /* width: 1450px; */
        display: grid;
         grid-template-columns: repeat(4, 1fr);
         margin-top: 300px;
         margin-left: 45px;
-        /* margin-right: -60px; */
+        gap: 50px;
       
     }
     .Category {
