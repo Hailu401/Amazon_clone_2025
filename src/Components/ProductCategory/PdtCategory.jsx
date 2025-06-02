@@ -8,7 +8,7 @@ import { BaseUrl } from "../../Api/EndPoint";
 const PdtCategory = () => {
 
   return (
-    <section className={classes.Catagory_section}>
+    <section>
       <div className={classes.Category_container}>
         {pdtcatagoryInfos.map((info, i) => {
           return <PdtCard data={info} key={i}/>;

@@ -1,81 +1,80 @@
+.Category_container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 15px; /* optional horizontal padding */
+}
+
 .Category {
     height: 280px;
-    width: 300px;
+    width: 100%;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-   margin-bottom: 30px;
-    
+    margin-bottom: 30px;
 }
+
 .Category img {
     width: 100%;
     object-fit: contain;
     max-height: 200px;
-    
 }
+
 .Category a {
     text-decoration: none;
-    color: rgb(35,35,35);
+    color: rgb(35, 35, 35);
 }
+
 .Category h2,
 .Category p {
     padding: 5px;
     margin-left: 15px;
 }
+
 .Category p {
     font-size: 1rem;
-    font-weight:bold;
+    font-weight: bold;
     color: rgb(9, 132, 209);
 }
-/* catagory container on pdtcategory component */
-.Catagory_section{
-    position: relative;
-    display: flex;
-    margin-top: -10px;
-    
-}
-.Category_container {
-    margin: 0 auto ;
-}
-@media screen and (min-width: 768px) and (max-width: 1024px){
+
+/* Tablet view (768px - 1023px) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
     .Category_container {
         width: 90%;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
-        
-        /* padding: 10px; */
-      
-
-        
+        margin: 0 auto;
     }
+
     .Category {
-    height: 320px;
-    width: 320px;
-    margin: 0 3px; 
-}
-   .Category img {
-    max-height: 200px;
-  
-} 
+        height: 320px;
+        margin: 0;
+    }
+
+    .Category img {
+        max-height: 200px;
+    }
 }
 
-@media screen and (min-width: 1025px) {
-.Catagory_section{
-    margin-top: 60px;
-    width: 1450px;
-}
- .Category_container {
-       /* width: 1450px; */
-       display: grid;
+/* Laptop/Desktop view (1024px and up) */
+@media screen and (min-width: 1024px) {
+    .Category_container {
+        margin-top: 350px;
+        position: relative;
+        display: grid;
         grid-template-columns: repeat(4, 1fr);
-        margin-top: 300px;
-        margin-left: 45px;
-        gap: 50px;
-      
+        gap: 30px;
+        max-width: 1200px; 
+        margin-left: 95px;
+        margin-right: auto;
+        padding: 20px 0;
+       
     }
+
     .Category {
-        width: 320px;
-     
+       width: 300px;
     }
-    
+
+    .Category img {
+        max-height: 150px;
+    }
 }
