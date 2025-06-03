@@ -8,3 +8,8 @@
 img{
     max-width: 100%;
 }
+
+:root {
+    --primary-color: #febd69;
+    --primary-shade: #d49644;
+  }
